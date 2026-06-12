@@ -7,19 +7,18 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0a0f;
-      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #333;
       line-height: 1.6;
     }
-    a { color: #4f9cf9; text-decoration: none; }
+    a { color: #009ADE; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
     /* Header */
     header {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid #1e1e2e;
+      background: #903E97;
+      padding: 1rem 0;
     }
     .header-flex {
       display: flex;
@@ -29,54 +28,66 @@
     .logo {
       font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
       color: #fff;
+      letter-spacing: -0.02em;
     }
-    .logo span { color: #4f9cf9; }
+    .logo span { font-weight: 400; }
 
     /* Hero */
     .hero {
-      padding: 4rem 0 3rem;
+      background: #903E97;
+      padding: 4rem 0 3.5rem;
       text-align: center;
+      color: #fff;
     }
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
     }
     .hero .subtitle {
-      font-size: 1.1rem;
-      color: #888;
+      font-size: 1.05rem;
       font-style: italic;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.9;
     }
     .hero .tagline {
       font-size: 1rem;
-      color: #aaa;
+      opacity: 0.85;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 1.5rem;
     }
+    .hero .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #903E97;
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .hero .cta-btn:hover { background: #f0f0f0; text-decoration: none; }
 
     /* At a Glance */
     .glance {
-      padding: 2rem 0 3rem;
+      padding: 3rem 0;
+      background: #fff;
     }
     .glance h2 {
-      font-size: 1.5rem;
-      color: #fff;
+      font-size: 1.6rem;
+      color: #009ADE;
       margin-bottom: 1.5rem;
       text-align: center;
     }
     .metrics {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
     }
     .metric-card {
-      background: #111118;
-      border: 1px solid #1e1e2e;
+      background: #F6F1F8;
       border-radius: 12px;
       padding: 1.5rem;
       text-align: center;
@@ -84,106 +95,142 @@
     .metric-value {
       font-size: 1.75rem;
       font-weight: 700;
-      color: #4f9cf9;
+      color: #903E97;
     }
     .metric-label {
-      font-size: 0.85rem;
-      color: #888;
-      margin-top: 0.25rem;
+      font-size: 0.82rem;
+      color: #666;
+      margin-top: 0.3rem;
+    }
+
+    /* Clients */
+    .clients-section {
+      padding: 2.5rem 0;
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+    .clients-section h2 {
+      font-size: 1.6rem;
+      color: #009ADE;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .clients-section .lead {
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .clients {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .client-tag {
+      background: #F6F1F8;
+      border: 1px solid #e0d6e8;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem;
+      color: #555;
+      font-weight: 500;
     }
 
     /* Sections */
     section { padding: 3rem 0; }
-    section + section { border-top: 1px solid #1e1e2e; }
+    section.alt { background: #F6F1F8; }
     h2 {
-      font-size: 1.5rem;
-      color: #fff;
+      font-size: 1.6rem;
+      color: #903E97;
       margin-bottom: 1.25rem;
     }
     h3 {
       font-size: 1.1rem;
-      color: #fff;
+      color: #903E97;
       margin-bottom: 0.5rem;
       margin-top: 1.25rem;
     }
     p, li {
       font-size: 0.95rem;
-      color: #aaa;
+      color: #444;
       margin-bottom: 0.75rem;
     }
     ul { list-style: none; padding-left: 0; }
-    ul li { position: relative; padding-left: 1.25rem; }
+    ul li { position: relative; padding-left: 1.25rem; margin-bottom: 0.75rem; }
     ul li::before {
       content: "•";
       position: absolute;
       left: 0;
-      color: #4f9cf9;
+      color: #903E97;
+      font-weight: bold;
     }
     ol { padding-left: 1.25rem; }
-    ol li { margin-bottom: 1rem; }
+    ol li { margin-bottom: 1rem; color: #444; }
 
     /* Quote */
-    .quote {
-      background: #111118;
-      border-left: 3px solid #4f9cf9;
+    .quote-box {
+      background: #F6F1F8;
+      border-left: 3px solid #903E97;
       padding: 1.25rem 1.5rem;
       margin: 1.5rem 0;
       border-radius: 0 12px 12px 0;
       font-style: italic;
-      color: #ccc;
+      color: #555;
     }
 
     /* Testimonials */
     .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
     .testimonial {
-      background: #111118;
-      border: 1px solid #1e1e2e;
+      background: #F3F4F5;
       border-radius: 12px;
       padding: 1.5rem;
     }
-    .testimonial p { font-style: italic; color: #ccc; margin-bottom: 0.75rem; }
-    .testimonial .author { font-size: 0.85rem; color: #888; font-weight: 600; }
+    .testimonial p { font-style: italic; color: #444; margin-bottom: 0.75rem; }
+    .testimonial .author { font-size: 0.82rem; color: #666; font-weight: 600; }
 
-    /* Clients */
-    .clients {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .client-tag {
-      background: #111118;
-      border: 1px solid #1e1e2e;
-      border-radius: 999px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.8rem;
-      color: #aaa;
-    }
-
-    /* CTA */
+    /* CTA Section */
     .cta {
+      background: #009ADE;
       text-align: center;
-      padding: 3rem 0 4rem;
+      padding: 3.5rem 0;
+      color: #fff;
     }
-    .cta h2 { margin-bottom: 1rem; }
-    .cta p { max-width: 500px; margin: 0 auto 1.5rem; color: #888; }
+    .cta h2 {
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .cta p {
+      color: rgba(255,255,255,0.9);
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+      font-size: 1rem;
+    }
     .cta a.button {
       display: inline-block;
-      background: #4f9cf9;
-      color: #fff;
+      background: #fff;
+      color: #009ADE;
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 999px;
       font-weight: 600;
       text-decoration: none;
     }
-    .cta a.button:hover { background: #3b82d6; }
+    .cta a.button:hover { background: #f0f0f0; }
 
     /* Footer */
     footer {
-      border-top: 1px solid #1e1e2e;
+      background: #F8F8F8;
+      border-top: 1px solid #eee;
       padding: 1.5rem 0;
       text-align: center;
       font-size: 0.8rem;
-      color: #444;
+      color: #888;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.7rem; }
+      .metrics { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
     }
   </style>
 </head>
@@ -200,6 +247,7 @@
       <h1>Secure Print-to-Mail Outsourcing &amp; Compliance Solutions</h1>
       <p class="subtitle">HIPAA-Compliant Communication &amp; Secure Mail Solutions</p>
       <p class="tagline">Lineage Connect ensures secure print and mail communications while maintaining compliance and protecting sensitive data.</p>
+      <a class="cta-btn" href="mailto:info@trustlineage.com">Discover How Lineage Can Help</a>
     </div>
   </section>
 
@@ -235,35 +283,54 @@
     </div>
   </section>
 
+  <section class="clients-section">
+    <div class="container">
+      <h2>Clients We've Partnered With</h2>
+      <p class="lead">Since 1984, 6,000 businesses have chosen to work with us. Here are just a handful:</p>
+      <div class="clients">
+        <span class="client-tag">BNSF Railway</span>
+        <span class="client-tag">Mazuma</span>
+        <span class="client-tag">New Directions</span>
+        <span class="client-tag">Johnson County</span>
+        <span class="client-tag">Sun Life</span>
+        <span class="client-tag">Wyandotte County</span>
+        <span class="client-tag">Clinical Reference Laboratory (CRL)</span>
+        <span class="client-tag">Children's Mercy Kansas City</span>
+        <span class="client-tag">Carson Dellosa</span>
+        <span class="client-tag">Platte County</span>
+        <span class="client-tag">MAX Insurance Agency</span>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="container">
-      <h2>The Problems We Solve</h2>
-      <p>Lineage Connect addresses four common business mailing failures:</p>
+      <h2>You're Not Alone If Your Business Has These Issues...</h2>
       <ul>
-        <li><strong>Insecure Data Infrastructure</strong> — No risk mitigation for storage, tracking, and location of physical and digital data.</li>
-        <li><strong>No Trusted or Experienced Partners</strong> — Lack of a mailing partner versed in compliance and regulations for sensitive-information industries.</li>
-        <li><strong>Equipment Skill &amp; Knowledge Gaps</strong> — Inadequate labor and expertise to operate equipment and handle core business process volumes.</li>
-        <li><strong>Unclear Business Plan</strong> — No clear affordability, capability, or vision for outsourcing versus in-house mailing systems.</li>
+        <li><strong>Insecure Data Infrastructure</strong> — No risk mitigation plan for storage, tracking, and location of data in both physical and digital form.</li>
+        <li><strong>No Trusted Or Experienced Partners</strong> — Lacking a mailing partner that understands compliance and regulations in industries with sensitive information.</li>
+        <li><strong>Equipment Skill And Knowledge</strong> — Missing or inadequate labor and expertise to operate equipment and handle core business process volume.</li>
+        <li><strong>Unclear Business Plan</strong> — Not having clear affordability, capability, or vision to plan and manage outsourcing versus in-house mailing systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="container">
+      <h2>Why Use Lineage Connect?</h2>
+      <ul>
+        <li><strong>Steeped In Experience</strong> — 30+ years of industry experience and facility infrastructure to meet HIPAA and essential security/compliance requirements.</li>
+        <li><strong>National Coverage</strong> — Complete outsourcing functionality across the US for our print-to-mail solutions.</li>
+        <li><strong>Equipped From Start To Finish</strong> — Systems, equipment, and storage capabilities to transform your mail from creation to distribution.</li>
+        <li><strong>Value Passed Back To You</strong> — Exclusive mailing discounts via a workshare partnership with the post office (USPS).</li>
       </ul>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <h2>Why Choose Lineage Connect?</h2>
-      <ul>
-        <li><strong>30+ Years of Experience</strong> — Facility infrastructure built to meet HIPAA and essential security/compliance requirements.</li>
-        <li><strong>National Coverage</strong> — Full outsourcing functionality across the US.</li>
-        <li><strong>End-to-End Equipped</strong> — Systems, equipment, and storage capabilities handle mail from creation to distribution.</li>
-        <li><strong>USPS Workshare Value</strong> — Exclusive mailing discounts passed back to clients via a workshare partnership with the post office.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>Security, Compliance &amp; Disaster Recovery</h2>
-      <div class="quote">"Bad things happen when things go wrong with your business's mailing system."</div>
+      <h2>Is Your Business's Mail Truly Secure?</h2>
+      <div class="quote-box">"Bad things happen when things go wrong with your business's mailing system."</div>
       <p><strong>Risks of insecure mail:</strong> Customers' private information ending up in wrong hands, late delivery, fines, damaged brand reputation, and lost clients.</p>
       <p><strong>Lineage Connect safeguards information by:</strong></p>
       <ul>
@@ -274,12 +341,12 @@
     </div>
   </section>
 
-  <section>
+  <section class="alt">
     <div class="container">
-      <h2>Core Services</h2>
+      <h2>Core Mailing Solutions</h2>
 
       <h3>Outsourced Print-To-Mail Services</h3>
-      <p>Full-service handling of organization, processing, printing, finishing, envelope insertion, postage, and delivery to USPS. Guarantees mail arrives to the right person, at the right time, the correct way.</p>
+      <p>Full-service handling of organization, processing, printing, finishing, envelope insertion, postage, and delivery to USPS. Ensures mail arrives to the right person, at the right time, the correct way.</p>
 
       <h3>Outsourced Mailing Services</h3>
       <p>High-volume jobs including sorting, presorting, metering, and USPS delivery. <em>May include mail pickup within greater Kansas City limits.</em></p>
@@ -294,7 +361,8 @@
 
   <section>
     <div class="container">
-      <h2>How It Works: 3-Step Process</h2>
+      <h2>How Lineage Connect Works</h2>
+      <p>Our streamlined process can expertly and efficiently handle any amount of mail your business needs to send:</p>
       <ol>
         <li><strong>Contact Us / Strategy Session</strong><br>A sales professional identifies core issues and presents comprehensive solutions tailored to your growth and optimization needs.</li>
         <li><strong>Process &amp; Implement Your Solution</strong><br>Lineage builds a business review plan based on your business case, budget, and goals. Services include ensuring data quality/security, producing business-critical documents, and exploring cross-selling opportunities.</li>
@@ -304,9 +372,9 @@
     </div>
   </section>
 
-  <section>
+  <section class="alt">
     <div class="container">
-      <h2>Client Testimonials</h2>
+      <h2>Why Businesses Like Yours Love Working With Us</h2>
       <div class="testimonials">
         <div class="testimonial">
           <p>"It's worked wonderfully, and I would recommend other companies inquire with Lineage should they be in search of an outsourcing solution."</p>
@@ -324,29 +392,10 @@
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <h2>Notable Clients &amp; Partners</h2>
-      <div class="clients">
-        <span class="client-tag">BNSF Railway</span>
-        <span class="client-tag">Mazuma</span>
-        <span class="client-tag">New Directions</span>
-        <span class="client-tag">Johnson County</span>
-        <span class="client-tag">Sun Life</span>
-        <span class="client-tag">Wyandotte County</span>
-        <span class="client-tag">Clinical Reference Laboratory (CRL)</span>
-        <span class="client-tag">Children's Mercy Kansas City</span>
-        <span class="client-tag">Carson Dellosa</span>
-        <span class="client-tag">Platte County</span>
-        <span class="client-tag">MAX Insurance Agency</span>
-      </div>
-    </div>
-  </section>
-
   <section class="cta">
     <div class="container">
-      <h2>Ready to secure your mailing operations?</h2>
-      <p>Contact Lineage Connect today to discuss how we can optimize your print-to-mail workflow, reduce costs, and keep your data compliant.</p>
+      <h2>Reach Out To Us Today</h2>
+      <p>Find out more about what's going on in your mailing operation and how Lineage Connect can help optimize it.</p>
       <a class="button" href="mailto:info@trustlineage.com">Contact Us</a>
     </div>
   </section>
