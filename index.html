@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://trustlineageconnect.com/assets/lineage-connect-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -34,7 +34,6 @@
   --line-dark:rgba(255,255,255,.16);
 
   --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
 
   --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:36px;
   --pad:clamp(1.25rem,4vw,2.5rem);
@@ -69,8 +68,9 @@ h1,h2,h3,h4{line-height:1.08;letter-spacing:-.035em;font-weight:800}
 h1{font-size:clamp(2.5rem,6.2vw,4.4rem)}
 h2{font-size:clamp(2rem,4.4vw,3.2rem)}
 h3{font-size:clamp(1.15rem,2vw,1.4rem);letter-spacing:-.02em;line-height:1.25}
-/* the Ascone signature: one italic serif accent word */
-.accent{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+/* accent word: brand colour, same typeface */
+.accent{color:var(--purple)}
+.band .accent{color:var(--cyan)}
 .lede{font-size:clamp(1rem,1.6vw,1.125rem);color:var(--ink-2);max-width:46ch}
 .lede.on-dark{color:rgba(255,255,255,.72)}
 .center{text-align:center}
@@ -222,8 +222,8 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
 .step{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:2rem;counter-increment:s;position:relative}
 .step::before{
-  content:'0' counter(s);display:block;font-family:var(--serif);font-style:italic;
-  font-size:2.4rem;line-height:1;color:var(--purple);margin-bottom:1.25rem;
+  content:'0' counter(s);display:block;font-size:2rem;font-weight:800;letter-spacing:-.04em;
+  line-height:1;color:var(--purple);margin-bottom:1.25rem;
 }
 .band .step::before{color:var(--cyan)}
 .step h3{margin-bottom:.6rem}
@@ -232,7 +232,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
 /* ============ TESTIMONIALS ============ */
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .quote{background:var(--cream);border-radius:var(--r-lg);padding:2rem;display:flex;flex-direction:column}
-.quote p{font-family:var(--serif);font-size:1.22rem;line-height:1.42;letter-spacing:-.015em;color:var(--plum-900);margin-bottom:1.75rem;flex:1}
+.quote p{font-size:1.05rem;font-weight:500;line-height:1.55;letter-spacing:-.01em;color:var(--plum-900);margin-bottom:1.75rem;flex:1}
 .quote cite{font-style:normal;font-size:.84rem;color:var(--ink-2);line-height:1.45}
 .quote cite b{display:block;color:var(--ink);font-weight:700;font-size:.9rem}
 
@@ -424,8 +424,8 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
     <div>
       <span class="eyebrow">Why Lineage Connect</span>
       <h2>The <span class="accent">missing piece</span> in your operation</h2>
-      <p class="lede" style="margin-top:1.5rem">When mail goes wrong, the consequences are not cosmetic — private data in the wrong hands, missed regulatory deadlines, fines, and a brand you spent decades building. We have specialized in preventing exactly that since 2013.</p>
-      <p class="lede" style="margin-top:1rem">You keep the parts of the process that belong in-house. We take the parts that do not, and we tell you honestly which is which.</p>
+      <p class="lede" style="margin-top:1.5rem">You send us a data file. We compose it, print it, verify every piece against its envelope, sort it for the best postage rate, hand it to USPS — and deliver the same document digitally to the customers who want it that way. That has been our specialty since 2013.</p>
+      <p class="lede" style="margin-top:1rem">You keep the parts of the process that belong in-house. We take the parts that do not, and we tell you plainly which is which.</p>
     </div>
   </div>
 </section>
@@ -442,7 +442,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14" rx="1"/></svg>
         <span class="tag">Most popular</span>
         <h3>Outsourced print-to-mail</h3>
-        <p>Full-service handling of composition, printing, finishing, envelope insertion, postage and delivery to USPS. Every piece is camera-verified before it is sealed, so the right document reaches the right person — the way it was supposed to.</p>
+        <p>Full-service handling of composition, printing, finishing, envelope insertion, postage and delivery to USPS. Every piece is camera-verified before it is sealed, so the right document reaches the right person, exactly the way you intended.</p>
       </article>
 
       <article class="card">
@@ -460,13 +460,13 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
       <article class="card">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         <h3>Local presorting</h3>
-        <p>We process your addresses, meter each piece and run it through our sorters so you earn USPS workshare discounts — savings passed straight back to you rather than kept as margin.</p>
+        <p>We process your addresses, meter each piece and run it through our sorters so you earn USPS workshare discounts, and we pass those savings straight back to you.</p>
       </article>
 
       <article class="card card-cream" style="grid-column:span 2">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
         <h3>Disaster recovery</h3>
-        <p style="max-width:70ch">Every business has documents it cannot afford to lose. We keep digital backups on our secure servers, so if the worst happens, your most important records are still exactly where you left them.</p>
+        <p style="max-width:70ch">We keep digital backups of your critical documents on our secure servers, so your records stay recoverable and exactly where you left them.</p>
       </article>
     </div>
   </div>
@@ -477,8 +477,8 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
   <div class="wrap">
     <div style="max-width:52ch">
       <span class="eyebrow on-dark">Security &amp; compliance</span>
-      <h2>Audited, not <span class="accent">asserted</span>.</h2>
-      <p class="lede on-dark" style="margin-top:1.5rem">Plenty of mailers say they are secure. We submit to independent audits and can show you the reports. Your data stays on our secure servers and is tracked from composition through delivery.</p>
+      <h2>Security you can <span class="accent">verify</span>.</h2>
+      <p class="lede on-dark" style="margin-top:1.5rem">We hold SOC 2 Type II and SOC 1 Type II attestations, pass IRS audits, and staff HIPAA-trained teams in compliant facilities. Your data stays on our secure servers and is tracked from composition through delivery — and we share the reports with your auditors.</p>
     </div>
 
     <div class="badges">
@@ -518,18 +518,18 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
   <div class="wrap">
     <div style="margin-bottom:2.5rem">
       <span class="eyebrow">Capabilities</span>
-      <h2>The details that decide whether mail <span class="accent">works</span></h2>
-      <p class="lede" style="margin-top:1.5rem">Anyone can put paper in an envelope. These are the controls that keep your postage down, your compliance intact, and your documents out of the wrong hands.</p>
+      <h2>How we get every piece <span class="accent">right</span></h2>
+      <p class="lede" style="margin-top:1.5rem">These are the controls running behind every job — keeping your postage low, your compliance documented, and each document matched to the right recipient.</p>
     </div>
 
     <div class="cap-grid">
       <div class="cap-item">
         <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Address hygiene</h4>
-        <p>NCOA and CASS processing catches moves and bad addresses before they cost you postage, reprints and a returned-mail problem.</p>
+        <p>NCOA and CASS processing updates every move and validates each address before print, so more of your mail lands correctly the first time.</p>
       </div>
       <div class="cap-item">
         <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>Camera verification</h4>
-        <p>Vision systems read every document through every stage of production and match it to its envelope. No cross-stuffing, no wrong recipient.</p>
+        <p>Vision systems read every document at each stage of production and confirm it against its envelope before the piece is sealed.</p>
       </div>
       <div class="cap-item">
         <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="14.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M2 22a10 10 0 0 1 6-9"/></svg>Full color &amp; variable data</h4>
@@ -541,11 +541,11 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
       </div>
       <div class="cap-item">
         <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg>Proof review &amp; approval</h4>
-        <p>You see and sign off on proofs before a single sheet is printed. Nothing goes to press on an assumption.</p>
+        <p>You review and approve proofs before a single sheet is printed, so every run starts from something you have already signed off.</p>
       </div>
       <div class="cap-item">
         <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Secure e-delivery</h4>
-        <p>Documents delivered as secure email PDFs for the customers who would rather not wait on the mail — driven by the same file as your print run.</p>
+        <p>Documents delivered as secure email PDFs for customers who prefer their statements in the inbox — driven by the same file as your print run.</p>
       </div>
       <div class="cap-item">
         <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>Online bill pay</h4>
@@ -559,29 +559,29 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
   </div>
 </section>
 
-<!-- ============ PROBLEM ============ -->
+<!-- ============ BENEFITS ============ -->
 <section style="padding-top:0">
   <div class="wrap">
     <div style="margin-bottom:2.5rem">
-      <span class="eyebrow">Sound familiar?</span>
-      <h2>You are not alone if this is your <span class="accent">reality</span></h2>
+      <span class="eyebrow">What you get</span>
+      <h2>Why businesses choose <span class="accent">Lineage Connect</span></h2>
     </div>
     <div class="grid g4">
       <article class="card">
-        <h3>Insecure data infrastructure</h3>
-        <p>No real plan for how sensitive data is stored, tracked and located — in physical or digital form.</p>
+        <h3>Steeped in experience</h3>
+        <p>Thirty-plus years of industry experience and facility infrastructure built to meet HIPAA and the security and compliance requirements your industry runs on.</p>
       </article>
       <article class="card">
-        <h3>No experienced partner</h3>
-        <p>A mailing vendor who does not actually understand the compliance rules your industry runs on.</p>
+        <h3>National coverage</h3>
+        <p>Complete print-to-mail outsourcing across the United States, with local pickup and presort service throughout the greater Kansas City area.</p>
       </article>
       <article class="card">
-        <h3>Equipment and expertise gaps</h3>
-        <p>Not enough trained people to run the equipment at the volume your core business demands.</p>
+        <h3>Equipped start to finish</h3>
+        <p>The systems, equipment and storage to carry your mail all the way from composition to distribution — under one roof, with one point of contact.</p>
       </article>
       <article class="card">
-        <h3>No clear plan</h3>
-        <p>No honest read on whether outsourcing or in-house is the affordable, capable choice for you.</p>
+        <h3>Value passed back to you</h3>
+        <p>Our workshare partnership with the post office earns exclusive presort discounts on your volume, and those savings go back into your budget.</p>
       </article>
     </div>
   </div>
@@ -597,14 +597,14 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
     <div class="steps">
       <article class="step" style="background:rgba(255,255,255,.05);border-color:var(--line-dark);color:#fff">
         <h3 style="color:#fff">Talk to a strategist</h3>
-        <p style="color:rgba(255,255,255,.7)">A sales professional trained to look at your business as a whole runs a strategy session with you, identifying the real issues rather than quoting a price per piece.</p>
+        <p style="color:rgba(255,255,255,.7)">A sales professional trained to look at your business as a whole maps your volume, timing and compliance needs with you before anyone talks price per piece.</p>
       </article>
       <article class="step" style="background:rgba(255,255,255,.05);border-color:var(--line-dark);color:#fff">
         <h3 style="color:#fff">Get a plan built for your case</h3>
         <p style="color:rgba(255,255,255,.7)">We present a business review with solutions matched to your budget, volume and goals — covering data quality, security and document production together.</p>
       </article>
       <article class="step" style="background:rgba(255,255,255,.05);border-color:var(--line-dark);color:#fff">
-        <h3 style="color:#fff">Hand it over — or don't</h3>
+        <h3 style="color:#fff">Hand it over with confidence</h3>
         <p style="color:rgba(255,255,255,.7)">If outsourcing is right, you gain a secure facility, workshare savings and one less thing to manage. If it isn't, we will tell you so and help you do it in-house.</p>
       </article>
     </div>
@@ -645,7 +645,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
     </div>
     <div class="faq">
       <details open>
-        <summary>What security audits do you actually hold?
+        <summary>Which security audits do you hold?
           <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </summary>
         <p>We are SOC 2 Type II and SOC 1 Type II audited, we pass IRS audits, and our staff and facilities are HIPAA trained and compliant. Type II matters: it tests whether controls actually operated over a period of time, rather than whether they existed on one day.</p>
@@ -657,16 +657,16 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
         <p>Yes. The same data file drives your printed pieces, secure email PDF delivery, and an online bill pay portal — so you are not integrating with one vendor for paper and another for digital.</p>
       </details>
       <details>
-        <summary>How do you make sure the right document goes to the right person?
+        <summary>How do you make sure each document reaches the right person?
           <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </summary>
-        <p>Camera and vision systems read each document at every production stage and match it against its envelope before sealing. Combined with NCOA and CASS address processing, that closes both failure modes — wrong contents and wrong address.</p>
+        <p>Camera and vision systems read each document at every production stage and match it against its envelope before sealing. NCOA and CASS processing verifies the address itself, so both the contents and the destination are confirmed before a piece leaves the floor.</p>
       </details>
       <details>
-        <summary>Will outsourcing actually save us money?
+        <summary>How does outsourcing save us money?
           <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </summary>
-        <p>Usually — through USPS workshare presort discounts we pass back to you, plus the equipment, labor and address-error costs you stop absorbing. If the numbers do not work in your favor, we will say so during the strategy session.</p>
+        <p>Three ways: USPS workshare presort discounts we pass back to you, the equipment and labor you no longer staff internally, and the reprint and return postage that NCOA and CASS address processing prevents. We will model all three against your actual volume during the strategy session.</p>
       </details>
       <details>
         <summary>Do you serve clients outside Kansas City?
@@ -675,10 +675,10 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
         <p>Yes. Print-to-mail outsourcing runs nationwide across the US. Mail pickup for presorting and outsourced mailing services is available within the greater Kansas City area.</p>
       </details>
       <details>
-        <summary>What happens to our documents if something goes wrong?
+        <summary>How are our documents backed up?
           <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </summary>
-        <p>Our disaster recovery service keeps digital backups of your critical documents on secure servers, so a fire, flood or failure on your side does not take your records with it.</p>
+        <p>Our disaster recovery service keeps digital backups of your critical documents on secure servers, so your records stay independently recoverable and available whenever you need them.</p>
       </details>
     </div>
   </div>
@@ -689,8 +689,8 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
   <div class="wrap cta-in">
     <div>
       <span class="eyebrow on-dark">Get started</span>
-      <h2>Let's find out what your mail is really <span class="accent">costing</span> you.</h2>
-      <p class="lede on-dark" style="margin-top:1.5rem">Book a strategy session. We will look at your volume, your compliance requirements and your current process — and tell you honestly whether we are the right answer.</p>
+      <h2>Let's map out what your mail <span class="accent">could</span> look like.</h2>
+      <p class="lede on-dark" style="margin-top:1.5rem">Book a strategy session. We will walk through your volume, your compliance requirements and your current process, then show you exactly what we would do with it.</p>
       <div class="cta-actions">
         <a class="btn btn-light" href="mailto:info@trustlineageconnect.com">
           Book a strategy session
@@ -701,10 +701,10 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
     </div>
     <div>
       <ul class="cta-list">
-        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A review of your current mail spend and postage discounts you are missing</li>
-        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A compliance gap check against SOC and HIPAA requirements</li>
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A review of your mail spend and the postage discounts available on your volume</li>
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A walkthrough of how we meet SOC 2, SOC 1 and HIPAA requirements</li>
         <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>An honest in-house versus outsource recommendation</li>
-        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No obligation, and no pressure to move work you should keep</li>
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No obligation, and a clear recommendation either way</li>
       </ul>
     </div>
   </div>
