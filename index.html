@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lineage Connect — Secure Print-to-Mail Outsourcing &amp; Compliance</title>
 <meta name="description" content="SOC 2 Type II and SOC 1 Type II audited print-to-mail outsourcing. Secure statements, invoices and notices — printed, mailed, e-delivered. 45 million pieces a year since 2013.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="canonical" href="https://trustlineageconnect.com/">
 <meta property="og:title" content="Lineage Connect — Secure Print-to-Mail Outsourcing">
 <meta property="og:description" content="SOC 2 Type II and SOC 1 Type II audited print-to-mail outsourcing. 45 million pieces a year.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://trustlineageconnect.com/">
+<meta property="og:image" content="https://trustlineageconnect.com/assets/lineage-connect-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -71,6 +74,9 @@ h3{font-size:clamp(1.15rem,2vw,1.4rem);letter-spacing:-.02em;line-height:1.25}
 .lede{font-size:clamp(1rem,1.6vw,1.125rem);color:var(--ink-2);max-width:46ch}
 .lede.on-dark{color:rgba(255,255,255,.72)}
 .center{text-align:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.split-img{border-radius:var(--r-xl);background:var(--cream);padding:clamp(1rem,3vw,2rem);overflow:hidden}
+.split-img img{width:100%;height:auto;mix-blend-mode:multiply}
 .center .lede{margin-inline:auto}
 .center .eyebrow{margin-inline:auto}
 
@@ -101,9 +107,11 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
 }
 .announce strong{color:var(--cyan);font-weight:700}
 .hdr{position:sticky;top:0;z-index:100;background:rgba(244,243,241,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.hdr-in{display:flex;align-items:center;gap:2.5rem;min-height:76px}
-.brand{display:inline-flex;align-items:center;min-height:44px;font-size:1.3rem;font-weight:800;letter-spacing:-.045em;color:var(--plum-900);white-space:nowrap}
-.brand em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--purple)}
+.hdr-in{display:flex;align-items:center;gap:2.5rem;min-height:92px}
+.brand{display:inline-flex;align-items:center;min-height:44px}
+.brand img{height:58px;width:auto}
+/* reversed lockup for dark surfaces */
+.brand-rev img{filter:brightness(0) invert(1)}
 .nav{display:flex;gap:1.5rem;margin-right:auto}
 .nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding-inline:.5rem;font-size:.9rem;font-weight:600;color:var(--ink-2);transition:color var(--t)}
 .nav a:hover{color:var(--purple)}
@@ -261,11 +269,8 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
 .ft a{font-size:.9rem;color:rgba(255,255,255,.72);transition:color var(--t)}
 .ft a:hover{color:#fff}
 .ft-brand p{font-size:.9rem;color:rgba(255,255,255,.6);max-width:30ch;margin-top:1rem}
-.ft-word{
-  font-size:clamp(3.2rem,13vw,9rem);font-weight:800;letter-spacing:-.055em;line-height:.9;
-  color:rgba(255,255,255,.09);margin-top:clamp(2.5rem,6vw,4rem);user-select:none;
-}
-.ft-word em{font-family:var(--serif);font-style:italic;font-weight:400}
+.ft-word{margin-top:clamp(2.5rem,6vw,4rem);user-select:none;pointer-events:none;line-height:0}
+.ft-word img{width:min(100%,760px);height:auto;opacity:.07;filter:brightness(0) invert(1)}
 .ft-legal{
   display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
   border-top:1px solid var(--line-dark);margin-top:2.5rem;padding-top:1.75rem;
@@ -282,9 +287,10 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
   .menu{display:block}
   .hdr-in .btn-primary{display:none}
   .cap-item{padding-right:1rem}
+  .brand img{height:50px}
 }
 @media(max-width:860px){
-  .hero-grid,.cta-in{grid-template-columns:1fr}
+  .hero-grid,.cta-in,.split{grid-template-columns:1fr}
   .hero .lede{max-width:none}
 }
 @media(max-width:620px){
@@ -313,7 +319,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
 
 <header class="hdr">
   <div class="wrap hdr-in">
-    <a class="brand" href="#main">Lineage <em>Connect</em></a>
+    <a class="brand" href="#main"><img src="assets/lineage-connect-logo.png" alt="Lineage Connect" width="653" height="298"></a>
     <nav class="nav" aria-label="Primary">
       <a href="#solutions">Solutions</a>
       <a href="#capabilities">Capabilities</a>
@@ -411,10 +417,16 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
 
 <!-- ============ ABOUT ============ -->
 <section>
-  <div class="wrap center">
-    <span class="eyebrow">Why Lineage Connect</span>
-    <h2>One partner for every <span class="accent">business-critical</span> document</h2>
-    <p class="lede" style="margin-top:1.5rem">When mail goes wrong, the consequences are not cosmetic — private data in the wrong hands, missed regulatory deadlines, fines and a brand you spent decades building. We have specialized in preventing exactly that since 2013.</p>
+  <div class="wrap split">
+    <div class="split-img">
+      <img src="assets/connect-cube.png" alt="Four white puzzle blocks forming a cube with a purple piece completing it" width="1000" height="1000" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <span class="eyebrow">Why Lineage Connect</span>
+      <h2>The <span class="accent">missing piece</span> in your operation</h2>
+      <p class="lede" style="margin-top:1.5rem">When mail goes wrong, the consequences are not cosmetic — private data in the wrong hands, missed regulatory deadlines, fines, and a brand you spent decades building. We have specialized in preventing exactly that since 2013.</p>
+      <p class="lede" style="margin-top:1rem">You keep the parts of the process that belong in-house. We take the parts that do not, and we tell you honestly which is which.</p>
+    </div>
   </div>
 </section>
 
@@ -705,7 +717,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
   <div class="wrap">
     <div class="ft-cols">
       <div class="ft-brand">
-        <div class="brand" style="color:#fff">Lineage <em style="color:var(--cyan)">Connect</em></div>
+        <div class="brand brand-rev"><img src="assets/lineage-connect-logo.png" alt="Lineage Connect" width="653" height="298" style="height:54px"></div>
         <p>Secure print-to-mail outsourcing and compliance solutions. Operating since 2013, part of a family business founded in 1984.</p>
       </div>
       <div>
@@ -737,7 +749,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem)}
       </div>
     </div>
 
-    <div class="ft-word" aria-hidden="true">Lineage <em>Connect</em></div>
+    <div class="ft-word" aria-hidden="true"><img src="assets/lineage-connect-logo.png" alt="" width="653" height="298"></div>
 
     <div class="ft-legal">
       <span>&copy; 2026 Lineage Connect. All rights reserved.</span>
