@@ -1,410 +1,719 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lineage Connect - Secure Print-to-Mail Outsourcing</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      color: #333;
-      line-height: 1.6;
-    }
-    a { color: #009ADE; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lineage Connect — Secure Print-to-Mail Outsourcing &amp; Compliance</title>
+<meta name="description" content="SOC 2 Type II and SOC 1 Type II audited print-to-mail outsourcing. Secure statements, invoices and notices — printed, mailed, e-delivered. 45 million pieces a year since 2013.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="canonical" href="https://trustlineageconnect.com/">
+<meta property="og:title" content="Lineage Connect — Secure Print-to-Mail Outsourcing">
+<meta property="og:description" content="SOC 2 Type II and SOC 1 Type II audited print-to-mail outsourcing. 45 million pieces a year.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trustlineageconnect.com/">
+<meta property="og:image" content="https://trustlineageconnect.com/assets/lineage-connect-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --plum-900:#2E1033;   /* deep panels */
+  --plum-800:#43184A;
+  --purple:#903E97;     /* brand */
+  --purple-tint:#EFE4F0;
+  --cyan:#009ADE;       /* brand accent */
+  --cyan-tint:#E2F2FB;
+  --cream:#F2ECE3;
+  --bg:#F4F3F1;
+  --card:#FFFFFF;
+  --ink:#16101A;
+  --ink-2:#4A4152;
+  --line:#E4E0E4;
+  --line-dark:rgba(255,255,255,.16);
 
-    /* Header */
-    header {
-      background: #903E97;
-      padding: 1rem 0;
-    }
-    .header-flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-    .logo span { font-weight: 400; }
+  --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
 
-    /* Hero */
-    .hero {
-      background: #903E97;
-      padding: 4rem 0 3.5rem;
-      text-align: center;
-      color: #fff;
-    }
-    .hero h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-    .hero .subtitle {
-      font-size: 1.05rem;
-      font-style: italic;
-      margin-bottom: 0.75rem;
-      opacity: 0.9;
-    }
-    .hero .tagline {
-      font-size: 1rem;
-      opacity: 0.85;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-    }
-    .hero .cta-btn {
-      display: inline-block;
-      background: #fff;
-      color: #903E97;
-      padding: 0.7rem 1.5rem;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-    .hero .cta-btn:hover { background: #f0f0f0; text-decoration: none; }
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:36px;
+  --pad:clamp(1.25rem,4vw,2.5rem);
+  --max:1200px;
+  --t:220ms cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--plum-900);color:#fff;padding:.75rem 1.25rem;z-index:200;border-radius:0 0 var(--r-sm) 0}
+.skip:focus{left:0}
 
-    /* At a Glance */
-    .glance {
-      padding: 3rem 0;
-      background: #fff;
-    }
-    .glance h2 {
-      font-size: 1.6rem;
-      color: #009ADE;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .metric-card {
-      background: #F6F1F8;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .metric-value {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #903E97;
-    }
-    .metric-label {
-      font-size: 0.82rem;
-      color: #666;
-      margin-top: 0.3rem;
-    }
+/* ============ PRIMITIVES ============ */
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--purple);display:block;margin-bottom:1rem;
+}
+.eyebrow.on-dark{color:var(--cyan)}
+h1,h2,h3,h4{line-height:1.08;letter-spacing:-.035em;font-weight:800}
+h1{font-size:clamp(2.5rem,6.2vw,4.4rem)}
+h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+h3{font-size:clamp(1.15rem,2vw,1.4rem);letter-spacing:-.02em;line-height:1.25}
+/* accent word: brand colour, same typeface */
+.accent{color:var(--purple)}
+.band .accent{color:var(--cyan)}
+.lede{font-size:clamp(1rem,1.6vw,1.125rem);color:var(--ink-2);max-width:46ch}
+.lede.on-dark{color:rgba(255,255,255,.72)}
+.center{text-align:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.split-img{border-radius:var(--r-xl);background:var(--cream);padding:clamp(1rem,3vw,2rem);overflow:hidden}
+.split-img img{width:100%;height:auto;mix-blend-mode:multiply}
+.center .lede{margin-inline:auto}
+.center .eyebrow{margin-inline:auto}
 
-    /* Clients */
-    .clients-section {
-      padding: 2.5rem 0;
-      background: #fff;
-      border-top: 1px solid #eee;
-    }
-    .clients-section h2 {
-      font-size: 1.6rem;
-      color: #009ADE;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-    .clients-section .lead {
-      text-align: center;
-      color: #666;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-    .clients {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .client-tag {
-      background: #F6F1F8;
-      border: 1px solid #e0d6e8;
-      border-radius: 999px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.82rem;
-      color: #555;
-      font-weight: 500;
-    }
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:52px;padding:.85rem 1.75rem;border-radius:999px;
+  font-family:var(--sans);font-size:.95rem;font-weight:700;letter-spacing:-.01em;
+  cursor:pointer;border:1.5px solid transparent;transition:var(--t);
+  transition-property:background-color,color,border-color,transform;
+}
+.btn-primary{background:var(--plum-900);color:#fff}
+.btn-primary:hover{background:var(--purple);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--plum-900)}
+.btn-light:hover{background:var(--cream);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--plum-900);background:#fff}
+.btn-ghost.on-dark{color:#fff;border-color:var(--line-dark)}
+.btn-ghost.on-dark:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.arrow{width:16px;height:16px;flex:none}
 
-    /* Sections */
-    section { padding: 3rem 0; }
-    section.alt { background: #F6F1F8; }
-    h2 {
-      font-size: 1.6rem;
-      color: #903E97;
-      margin-bottom: 1.25rem;
-    }
-    h3 {
-      font-size: 1.1rem;
-      color: #903E97;
-      margin-bottom: 0.5rem;
-      margin-top: 1.25rem;
-    }
-    p, li {
-      font-size: 0.95rem;
-      color: #444;
-      margin-bottom: 0.75rem;
-    }
-    ul { list-style: none; padding-left: 0; }
-    ul li { position: relative; padding-left: 1.25rem; margin-bottom: 0.75rem; }
-    ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #903E97;
-      font-weight: bold;
-    }
-    ol { padding-left: 1.25rem; }
-    ol li { margin-bottom: 1rem; color: #444; }
+section{padding-block:clamp(4rem,9vw,7.5rem)}
+.rule{height:1px;background:var(--line);border:0}
 
-    /* Quote */
-    .quote-box {
-      background: #F6F1F8;
-      border-left: 3px solid #903E97;
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 0 12px 12px 0;
-      font-style: italic;
-      color: #555;
-    }
+/* ============ ANNOUNCE + HEADER ============ */
+.announce{
+  background:var(--plum-900);color:rgba(255,255,255,.9);
+  font-size:.8rem;text-align:center;padding:.7rem 1rem;letter-spacing:.01em;
+}
+.announce strong{color:var(--cyan);font-weight:700}
+.hdr{position:sticky;top:0;z-index:100;background:rgba(244,243,241,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:2.5rem;min-height:92px}
+.brand{display:inline-flex;align-items:center;min-height:44px}
+.brand img{height:58px;width:auto}
+/* reversed lockup for dark surfaces */
+.brand-rev img{filter:brightness(0) invert(1)}
+.nav{display:flex;gap:1.5rem;margin-right:auto}
+.nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding-inline:.5rem;font-size:.9rem;font-weight:600;color:var(--ink-2);transition:color var(--t)}
+.nav a:hover{color:var(--purple)}
+.hdr .btn{min-height:46px;padding:.6rem 1.4rem;font-size:.875rem}
+/* mobile disclosure nav */
+.menu{display:none;margin-left:auto;position:relative}
+.menu>summary{
+  list-style:none;cursor:pointer;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);display:grid;place-items:center;background:#fff;color:var(--plum-900);
+}
+.menu>summary::-webkit-details-marker{display:none}
+.menu[open]>summary{background:var(--plum-900);color:#fff;border-color:var(--plum-900)}
+.menu-panel{
+  position:absolute;right:0;top:calc(100% + 12px);width:min(78vw,268px);
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+  box-shadow:0 22px 50px -20px rgba(46,16,51,.36);padding:.5rem;z-index:110;
+}
+.menu-panel a{
+  display:flex;align-items:center;min-height:48px;padding:0 1rem;border-radius:var(--r-sm);
+  font-size:.95rem;font-weight:600;color:var(--ink);transition:background-color var(--t),color var(--t);
+}
+.menu-panel a:hover{background:var(--purple-tint);color:var(--purple)}
 
-    /* Testimonials */
-    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-    .testimonial {
-      background: #F3F4F5;
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    .testimonial p { font-style: italic; color: #444; margin-bottom: 0.75rem; }
-    .testimonial .author { font-size: 0.82rem; color: #666; font-weight: 600; }
+/* ============ HERO ============ */
+.hero{padding-block:clamp(3rem,7vw,5.5rem) clamp(3rem,6vw,4.5rem)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1{margin-bottom:1.5rem}
+.hero-cta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:2.25rem}
+.proof{font-size:.82rem;color:var(--ink-2);line-height:1.4}
+.proof b{display:block;color:var(--ink);font-size:.95rem;font-weight:800}
 
-    /* CTA Section */
-    .cta {
-      background: #009ADE;
-      text-align: center;
-      padding: 3.5rem 0;
-      color: #fff;
-    }
-    .cta h2 {
-      color: #fff;
-      margin-bottom: 0.75rem;
-    }
-    .cta p {
-      color: rgba(255,255,255,0.9);
-      max-width: 500px;
-      margin: 0 auto 1.5rem;
-      font-size: 1rem;
-    }
-    .cta a.button {
-      display: inline-block;
-      background: #fff;
-      color: #009ADE;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .cta a.button:hover { background: #f0f0f0; }
+/* bento */
+.bento{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px}
+.tile{border-radius:var(--r-lg);padding:1.75rem;display:flex;flex-direction:column;justify-content:space-between;min-height:196px;position:relative;overflow:hidden}
+.tile-cream{background:var(--cream)}
+.tile-lilac{background:var(--purple-tint)}
+.tile-plum{background:var(--plum-900);color:#fff}
+.tile-purple{background:var(--purple);color:#fff}
+.tile .big{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:800;letter-spacing:-.05em;line-height:1}
+.tile .big.sm{font-size:clamp(1.5rem,2.4vw,2rem)}
+.tile .cap{font-size:.85rem;font-weight:600;color:var(--ink-2)}
+.tile-plum .cap{color:rgba(255,255,255,.72)}
+.tile-purple .cap{color:rgba(255,255,255,.92)}
+.tile .ico{width:34px;height:34px;stroke-width:1.5}
+.tile-cream .ico,.tile-lilac .ico{color:var(--purple)}
+.tile-plum .ico{color:var(--cyan)}
+.tile-purple .ico{color:#fff}
+/* arc motif */
+.arc{position:absolute;width:150px;height:150px;border-radius:50%;opacity:.5;pointer-events:none}
+.arc-a{right:-52px;top:-52px;background:#fff}
+.arc-b{right:-46px;bottom:-46px;background:rgba(255,255,255,.1)}
+.sparkle{position:absolute;color:var(--cyan);opacity:.9}
 
-    /* Footer */
-    footer {
-      background: #F8F8F8;
-      border-top: 1px solid #eee;
-      padding: 1.5rem 0;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #888;
-    }
+/* ============ CARD GRIDS ============ */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border-radius:var(--r-lg);padding:2rem;border:1px solid var(--line);transition:var(--t);transition-property:transform,box-shadow,border-color}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 44px -22px rgba(46,16,51,.32);border-color:var(--purple)}
+.card h3{margin-bottom:.65rem}
+.card p{font-size:.92rem;color:var(--ink-2)}
+.card .ico{display:block;width:26px;height:26px;stroke-width:1.6;color:var(--purple);margin-bottom:1.25rem}
+.card-dark{background:var(--plum-900);color:#fff;border-color:transparent}
+.card-dark p{color:rgba(255,255,255,.7)}
+.card-dark .ico{color:var(--cyan)}
+.card-dark:hover{border-color:var(--cyan)}
+.card-cream{background:var(--cream);border-color:transparent}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);background:var(--plum-900);padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 1.7rem; }
-      .metrics { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-    }
-  </style>
+/* compact capability list */
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.cap-item{padding:1.75rem 1.5rem 1.75rem 0;border-bottom:1px solid var(--line)}
+.cap-item h4{font-size:1rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.4rem;display:flex;align-items:center;gap:.6rem}
+.cap-item h4 .ico{width:19px;height:19px;stroke-width:1.8;color:var(--purple);flex:none}
+.cap-item p{font-size:.87rem;color:var(--ink-2);line-height:1.55}
+
+/* ============ DARK BANDS ============ */
+.band{background:var(--plum-900);color:#fff;position:relative;overflow:hidden}
+.band h2,.band h3{color:#fff}
+.band-mesh::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(58% 78% at 88% 8%,rgba(0,154,222,.30),transparent 62%),
+    radial-gradient(52% 68% at 6% 96%,rgba(144,62,151,.55),transparent 60%);
+}
+.band .wrap{position:relative}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3.25rem;padding-top:2.5rem;border-top:1px solid var(--line-dark)}
+.stat b{display:block;font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:800;letter-spacing:-.05em;line-height:1;margin-bottom:.5rem;color:#fff}
+.stat span{font-size:.84rem;color:rgba(255,255,255,.66);font-weight:500}
+
+/* compliance badges */
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:3rem}
+.badge{border:1px solid var(--line-dark);border-radius:var(--r-md);padding:1.6rem;background:rgba(255,255,255,.04);transition:var(--t);transition-property:background-color,border-color}
+.badge:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
+.badge .ico{width:24px;height:24px;stroke-width:1.6;color:var(--cyan);margin-bottom:1rem}
+.badge b{display:block;font-size:1.02rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.35rem}
+.badge span{font-size:.83rem;color:rgba(255,255,255,.65);line-height:1.5}
+
+/* ============ PROCESS ============ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:2rem;counter-increment:s;position:relative}
+.step::before{
+  content:'0' counter(s);display:block;font-size:2rem;font-weight:800;letter-spacing:-.04em;
+  line-height:1;color:var(--purple);margin-bottom:1.25rem;
+}
+.band .step::before{color:var(--cyan)}
+.step h3{margin-bottom:.6rem}
+.step p{font-size:.92rem;color:var(--ink-2)}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  display:flex;justify-content:space-between;align-items:center;gap:1.5rem;
+  padding:1.5rem 0;cursor:pointer;list-style:none;
+  font-size:1.04rem;font-weight:700;letter-spacing:-.02em;transition:color var(--t);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--purple)}
+.faq summary .pm{
+  flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;transition:var(--t);transition-property:transform,background-color,border-color,color;
+}
+.faq details[open] summary .pm{transform:rotate(45deg);background:var(--plum-900);border-color:var(--plum-900);color:#fff}
+.faq details p{padding-bottom:1.75rem;color:var(--ink-2);font-size:.95rem;max-width:64ch}
+
+/* ============ CTA ============ */
+.cta-in{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.cta-list{list-style:none;margin-top:2rem;display:grid;gap:1rem}
+.cta-list li{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;color:rgba(255,255,255,.82)}
+.cta-list .ico{width:20px;height:20px;stroke-width:2;color:var(--cyan);flex:none;margin-top:.2rem}
+.cta-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.5rem}
+
+/* ============ FOOTER ============ */
+.ft{background:var(--plum-900);color:#fff;padding-block:clamp(3.5rem,7vw,5rem) 2rem}
+.ft-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem}
+.ft h5{font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.15rem}
+.ft ul{list-style:none;display:grid}
+.ft ul a{display:flex;align-items:center;min-height:44px}
+.ft a{font-size:.9rem;color:rgba(255,255,255,.72);transition:color var(--t)}
+.ft a:hover{color:#fff}
+.ft-brand p{font-size:.9rem;color:rgba(255,255,255,.6);max-width:30ch;margin-top:1rem}
+.ft-word{margin-top:clamp(2.5rem,6vw,4rem);user-select:none;pointer-events:none;line-height:0}
+.ft-word img{width:min(100%,760px);height:auto;opacity:.07;filter:brightness(0) invert(1)}
+.ft-legal{
+  display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-top:1px solid var(--line-dark);margin-top:2.5rem;padding-top:1.75rem;
+  font-size:.8rem;color:rgba(255,255,255,.5);
+}
+.ft-legal a{display:inline-flex;align-items:center;min-height:44px;font-size:.8rem}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1024px){
+  .g4,.cap-grid,.badges,.stat-row{grid-template-columns:repeat(2,1fr)}
+  .g3,.steps{grid-template-columns:repeat(2,1fr)}
+  .ft-cols{grid-template-columns:1fr 1fr}
+  .nav{display:none}
+  .menu{display:block}
+  .hdr-in .btn-primary{display:none}
+  .cap-item{padding-right:1rem}
+  .brand img{height:50px}
+}
+@media(max-width:860px){
+  .hero-grid,.cta-in,.split{grid-template-columns:1fr}
+  .hero .lede{max-width:none}
+}
+@media(max-width:620px){
+  .g2,.g3,.g4,.steps,.cap-grid,.badges,.stat-row,.ft-cols{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr}
+  .tile{min-height:150px;padding:1.35rem}
+  .card,.step{padding:1.5rem}
+  .cap-item{padding-right:0}
+  .hero-cta{gap:1rem}
+  .btn{width:100%}
+  .proof{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .card:hover,.btn:hover{transform:none}
+}
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 
-  <header>
-    <div class="container header-flex">
-      <div class="logo">Lineage <span>Connect</span></div>
+<div class="announce">
+  <strong>SOC 2 Type II &amp; SOC 1 Type II audited</strong> &nbsp;·&nbsp; 45 million pieces mailed a year, nationwide
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#main"><img src="assets/lineage-connect-logo.png" alt="Lineage Connect" width="653" height="298"></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#solutions">Solutions</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary" href="#contact">Book a strategy session</a>
+    <details class="menu">
+      <summary aria-label="Open navigation menu" role="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </summary>
+      <nav class="menu-panel" aria-label="Mobile">
+        <a href="#solutions">Solutions</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#compliance">Compliance</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" style="color:var(--purple)">Book a strategy session</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Secure print-to-mail outsourcing</span>
+      <h1>Every document, delivered <span class="accent">exactly</span> as it should be.</h1>
+      <p class="lede">Statements, invoices and notices — printed, verified, mailed and e-delivered from a SOC&nbsp;2 Type&nbsp;II audited facility. Your customers' data never leaves a controlled environment.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">
+          Book a strategy session
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="proof"><b>6,000+ businesses</b>have trusted us since 1984</p>
+      </div>
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Secure Print-to-Mail Outsourcing &amp; Compliance Solutions</h1>
-      <p class="subtitle">HIPAA-Compliant Communication &amp; Secure Mail Solutions</p>
-      <p class="tagline">Lineage Connect ensures secure print and mail communications while maintaining compliance and protecting sensitive data.</p>
-      <a class="cta-btn" href="mailto:info@trustlineage.com">Discover How Lineage Can Help</a>
-    </div>
-  </section>
+    <div class="bento" aria-label="Key figures">
+      <div class="tile tile-cream">
+        <span class="arc arc-a"></span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+        <div>
+          <div class="big">45M</div>
+          <div class="cap">Pieces mailed per year</div>
+        </div>
+      </div>
 
-  <section class="glance">
-    <div class="container">
-      <h2>At a Glance</h2>
-      <div class="metrics">
-        <div class="metric-card">
-          <div class="metric-value">1984</div>
-          <div class="metric-label">Parent Company Tenure</div>
+      <div class="tile tile-plum">
+        <span class="arc arc-b"></span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div>
+          <div class="big">SOC 2</div>
+          <div class="cap">Type II audited</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-value">2013</div>
-          <div class="metric-label">Lineage Connect Operating Since</div>
+      </div>
+
+      <div class="tile tile-purple">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h3"/></svg>
+        <div>
+          <div class="big">100%</div>
+          <div class="cap">Camera-verified mail integrity</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-value">6,000+</div>
-          <div class="metric-label">Businesses Served</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">45M</div>
-          <div class="metric-label">Annual Mail Volume</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">National</div>
-          <div class="metric-label">US Coverage</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">HIPAA</div>
-          <div class="metric-label">Compliant Facilities</div>
+      </div>
+
+      <div class="tile tile-lilac">
+        <span class="arc arc-a"></span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <div>
+          <div class="big sm">Print <span style="color:var(--purple)">&amp;</span> Digital</div>
+          <div class="cap">Mail, secure email &amp; online bill pay</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="clients-section">
-    <div class="container">
-      <h2>Clients We've Partnered With</h2>
-      <p class="lead">Since 1984, 6,000 businesses have chosen to work with us. Here are just a handful:</p>
-      <div class="clients">
-        <span class="client-tag">BNSF Railway</span>
-        <span class="client-tag">Mazuma</span>
-        <span class="client-tag">New Directions</span>
-        <span class="client-tag">Johnson County</span>
-        <span class="client-tag">Sun Life</span>
-        <span class="client-tag">Wyandotte County</span>
-        <span class="client-tag">Clinical Reference Laboratory (CRL)</span>
-        <span class="client-tag">Children's Mercy Kansas City</span>
-        <span class="client-tag">Carson Dellosa</span>
-        <span class="client-tag">Platte County</span>
-        <span class="client-tag">MAX Insurance Agency</span>
+<!-- ============ ABOUT ============ -->
+<section style="padding-top:clamp(2.5rem,6vw,4.5rem)">
+  <div class="wrap split">
+    <div class="split-img">
+      <img src="assets/connect-cube.png" alt="Four white puzzle blocks forming a cube with a purple piece completing it" width="1000" height="1000" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <span class="eyebrow">Why Lineage Connect</span>
+      <h2>The <span class="accent">missing piece</span> in your operation</h2>
+      <p class="lede" style="margin-top:1.5rem">You send us a data file. We compose it, print it, verify every piece against its envelope, sort it for the best postage rate, hand it to USPS — and deliver the same document digitally to the customers who want it that way. That has been our specialty since 2013.</p>
+      <p class="lede" style="margin-top:1rem">You keep the parts of the process that belong in-house. We take the parts that do not, and we tell you plainly which is which.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTIONS ============ -->
+<section id="solutions" style="padding-top:0">
+  <div class="wrap">
+    <div style="margin-bottom:2.5rem">
+      <span class="eyebrow">Solutions</span>
+      <h2>Mailing solutions that <span class="accent">complete</span> your business</h2>
+    </div>
+    <div class="grid g2">
+      <article class="card card-dark">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14" rx="1"/></svg>
+        <span class="tag">Most popular</span>
+        <h3>Outsourced print-to-mail</h3>
+        <p>Full-service handling of composition, printing, finishing, envelope insertion, postage and delivery to USPS. Every piece is camera-verified before it is sealed, so the right document reaches the right person, exactly the way you intended.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <h3>Electronic delivery &amp; online bill pay</h3>
+        <p>Give your customers a choice. We deliver documents as secure email PDFs and host an online bill pay portal, so the same data file drives both the printed piece and the digital one — no second vendor, no second integration.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+        <h3>Outsourced mailing services</h3>
+        <p>Hand us the high-volume jobs. We sort, presort and meter as needed and deliver to USPS on your behalf — including pickup within the greater Kansas City area.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h3>Local presorting</h3>
+        <p>We process your addresses, meter each piece and run it through our sorters so you earn USPS workshare discounts, and we pass those savings straight back to you.</p>
+      </article>
+
+      <article class="card card-cream" style="grid-column:span 2">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+        <h3>Disaster recovery</h3>
+        <p style="max-width:70ch">We keep digital backups of your critical documents on our secure servers, so your records stay recoverable and exactly where you left them.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPLIANCE BAND ============ -->
+<section id="compliance" class="band band-mesh">
+  <div class="wrap">
+    <div style="max-width:52ch">
+      <span class="eyebrow on-dark">Security &amp; compliance</span>
+      <h2>Security you can <span class="accent">verify</span>.</h2>
+      <p class="lede on-dark" style="margin-top:1.5rem">We hold SOC 2 Type II and SOC 1 Type II attestations, pass IRS audits, and staff HIPAA-trained teams in compliant facilities. Your data stays on our secure servers and is tracked from composition through delivery — and we share the reports with your auditors.</p>
+    </div>
+
+    <div class="badges">
+      <div class="badge">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        <b>SOC 2 Type II</b>
+        <span>Independently audited controls for security and confidentiality — over time, not a point-in-time snapshot.</span>
+      </div>
+      <div class="badge">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <b>SOC 1 Type II</b>
+        <span>Controls relevant to your financial reporting — the report your auditors will ask for when we touch billing.</span>
+      </div>
+      <div class="badge">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+        <b>IRS audited</b>
+        <span>We pass IRS audits — the assurance you need before we handle tax forms and other federally regulated documents.</span>
+      </div>
+      <div class="badge">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V4a2 2 0 0 0-2-2z"/></svg>
+        <b>HIPAA compliant</b>
+        <span>HIPAA-trained staff and compliant facilities for protected health information, end to end.</span>
       </div>
     </div>
-  </section>
 
-  <section>
-    <div class="container">
-      <h2>You're Not Alone If Your Business Has These Issues...</h2>
-      <ul>
-        <li><strong>Insecure Data Infrastructure</strong> — No risk mitigation plan for storage, tracking, and location of data in both physical and digital form.</li>
-        <li><strong>No Trusted Or Experienced Partners</strong> — Lacking a mailing partner that understands compliance and regulations in industries with sensitive information.</li>
-        <li><strong>Equipment Skill And Knowledge</strong> — Missing or inadequate labor and expertise to operate equipment and handle core business process volume.</li>
-        <li><strong>Unclear Business Plan</strong> — Not having clear affordability, capability, or vision to plan and manage outsourcing versus in-house mailing systems.</li>
-      </ul>
+    <div class="stat-row">
+      <div class="stat"><b>1984</b><span>Parent company founded</span></div>
+      <div class="stat"><b>2013</b><span>Lineage Connect operating since</span></div>
+      <div class="stat"><b>6,000+</b><span>Businesses served</span></div>
+      <div class="stat"><b>National</b><span>US coverage</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="alt">
-    <div class="container">
-      <h2>Why Use Lineage Connect?</h2>
-      <ul>
-        <li><strong>Steeped In Experience</strong> — 30+ years of industry experience and facility infrastructure to meet HIPAA and essential security/compliance requirements.</li>
-        <li><strong>National Coverage</strong> — Complete outsourcing functionality across the US for our print-to-mail solutions.</li>
-        <li><strong>Equipped From Start To Finish</strong> — Systems, equipment, and storage capabilities to transform your mail from creation to distribution.</li>
-        <li><strong>Value Passed Back To You</strong> — Exclusive mailing discounts via a workshare partnership with the post office (USPS).</li>
-      </ul>
+<!-- ============ CAPABILITIES ============ -->
+<section id="capabilities">
+  <div class="wrap">
+    <div style="margin-bottom:2.5rem">
+      <span class="eyebrow">Capabilities</span>
+      <h2>How we get every piece <span class="accent">right</span></h2>
+      <p class="lede" style="margin-top:1.5rem">These are the controls running behind every job — keeping your postage low, your compliance documented, and each document matched to the right recipient.</p>
     </div>
-  </section>
 
-  <section>
-    <div class="container">
-      <h2>Is Your Business's Mail Truly Secure?</h2>
-      <div class="quote-box">"Bad things happen when things go wrong with your business's mailing system."</div>
-      <p><strong>Risks of insecure mail:</strong> Customers' private information ending up in wrong hands, late delivery, fines, damaged brand reputation, and lost clients.</p>
-      <p><strong>Lineage Connect safeguards information by:</strong></p>
-      <ul>
-        <li>Keeping data on <strong>secure servers</strong></li>
-        <li>Securely tracking mail <strong>from print to delivery</strong></li>
-        <li>Offering <strong>disaster recovery services</strong> — digital backups stored securely so documents survive worst-case scenarios</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="alt">
-    <div class="container">
-      <h2>Core Mailing Solutions</h2>
-
-      <h3>Outsourced Print-To-Mail Services</h3>
-      <p>Full-service handling of organization, processing, printing, finishing, envelope insertion, postage, and delivery to USPS. Ensures mail arrives to the right person, at the right time, the correct way.</p>
-
-      <h3>Outsourced Mailing Services</h3>
-      <p>High-volume jobs including sorting, presorting, metering, and USPS delivery. <em>May include mail pickup within greater Kansas City limits.</em></p>
-
-      <h3>Local Presorting Services</h3>
-      <p>Address processing, metering, and presorting through sorters to earn USPS discounts via the workshare partnership. <em>May include mail pickup within greater Kansas City limits.</em></p>
-
-      <h3>Disaster Recovery Services</h3>
-      <p>Secure digital document backups stored on secure servers for business continuity.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>How Lineage Connect Works</h2>
-      <p>Our streamlined process can expertly and efficiently handle any amount of mail your business needs to send:</p>
-      <ol>
-        <li><strong>Contact Us / Strategy Session</strong><br>A sales professional identifies core issues and presents comprehensive solutions tailored to your growth and optimization needs.</li>
-        <li><strong>Process &amp; Implement Your Solution</strong><br>Lineage builds a business review plan based on your business case, budget, and goals. Services include ensuring data quality/security, producing business-critical documents, and exploring cross-selling opportunities.</li>
-        <li><strong>Enjoy Stress-Free Outsourced Mailing</strong><br>Clients gain peace of mind via a secure facility, save money through USPS workshare discounts, and reduce internal management burden.</li>
-      </ol>
-      <p><em>Consultative approach:</em> Lineage Connect will take processes into their experienced hands <strong>only</strong> if it makes sense for your core business. If outsourcing isn't the right fit, they guide you toward the right in-house solution.</p>
-    </div>
-  </section>
-
-  <section class="alt">
-    <div class="container">
-      <h2>Why Businesses Like Yours Love Working With Us</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>"It's worked wonderfully, and I would recommend other companies inquire with Lineage should they be in search of an outsourcing solution."</p>
-          <div class="author">— Susan Powell, Carson-Dellosa Education, Greensboro, NC</div>
-        </div>
-        <div class="testimonial">
-          <p>"Working with Lineage to process our mail has been seamless. They are responsive and professional to work with since we started with them over a year ago. We are very happy!"</p>
-          <div class="author">— Kim Bronder, MAX Insurance Agency, Overland Park, KS</div>
-        </div>
-        <div class="testimonial">
-          <p>"I feel like we have a business partner. I've appreciated most working as a team throughout all phases of the process."</p>
-          <div class="author">— David Henry, Sun Life Kansas City, Kansas City, MO</div>
-        </div>
+    <div class="cap-grid">
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Address hygiene</h4>
+        <p>NCOA and CASS processing updates every move and validates each address before print, so more of your mail lands correctly the first time.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>Camera verification</h4>
+        <p>Vision systems read every document at each stage of production and confirm it against its envelope before the piece is sealed.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="14.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M2 22a10 10 0 0 1 6-9"/></svg>Full color &amp; variable data</h4>
+        <p>Full-color output with per-recipient variable content, so a statement can carry a targeted message instead of a generic one.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M8 15h2M14 15h2"/></svg>Selective inserting</h4>
+        <p>Business rules decide which insert goes in which envelope — regulatory notices to the accounts that need them, offers to the ones that don't.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg>Proof review &amp; approval</h4>
+        <p>You review and approve proofs before a single sheet is printed, so every run starts from something you have already signed off.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Secure e-delivery</h4>
+        <p>Documents delivered as secure email PDFs for customers who prefer their statements in the inbox — driven by the same file as your print run.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>Online bill pay</h4>
+        <p>A hosted portal where your customers view and pay their bill online, shortening the gap between the document and the payment.</p>
+      </div>
+      <div class="cap-item">
+        <h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg>USPS workshare discounts</h4>
+        <p>Our workshare partnership with the post office earns presort discounts on your volume — and we pass that saving back to you.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta">
-    <div class="container">
-      <h2>Reach Out To Us Today</h2>
-      <p>Find out more about what's going on in your mailing operation and how Lineage Connect can help optimize it.</p>
-      <a class="button" href="mailto:info@trustlineage.com">Contact Us</a>
+<!-- ============ BENEFITS ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div style="margin-bottom:2.5rem">
+      <span class="eyebrow">What you get</span>
+      <h2>Why businesses choose <span class="accent">Lineage Connect</span></h2>
     </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      &copy; 2026 Lineage Connect. All rights reserved.
+    <div class="grid g4">
+      <article class="card">
+        <h3>Steeped in experience</h3>
+        <p>Thirty-plus years of industry experience and facility infrastructure built to meet HIPAA and the security and compliance requirements your industry runs on.</p>
+      </article>
+      <article class="card">
+        <h3>National coverage</h3>
+        <p>Complete print-to-mail outsourcing across the United States, with local pickup and presort service throughout the greater Kansas City area.</p>
+      </article>
+      <article class="card">
+        <h3>Equipped start to finish</h3>
+        <p>The systems, equipment and storage to carry your mail all the way from composition to distribution — under one roof, with one point of contact.</p>
+      </article>
+      <article class="card">
+        <h3>Value passed back to you</h3>
+        <p>Our workshare partnership with the post office earns exclusive presort discounts on your volume, and those savings go back into your budget.</p>
+      </article>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- ============ PROCESS ============ -->
+<section id="process" class="band">
+  <div class="wrap">
+    <div style="max-width:52ch;margin-bottom:3rem">
+      <span class="eyebrow on-dark">How it works</span>
+      <h2>Three steps to <span class="accent">stress-free</span> mail</h2>
+    </div>
+    <div class="steps">
+      <article class="step" style="background:rgba(255,255,255,.05);border-color:var(--line-dark);color:#fff">
+        <h3 style="color:#fff">Talk to a strategist</h3>
+        <p style="color:rgba(255,255,255,.7)">A sales professional trained to look at your business as a whole maps your volume, timing and compliance needs with you before anyone talks price per piece.</p>
+      </article>
+      <article class="step" style="background:rgba(255,255,255,.05);border-color:var(--line-dark);color:#fff">
+        <h3 style="color:#fff">Get a plan built for your case</h3>
+        <p style="color:rgba(255,255,255,.7)">We present a business review with solutions matched to your budget, volume and goals — covering data quality, security and document production together.</p>
+      </article>
+      <article class="step" style="background:rgba(255,255,255,.05);border-color:var(--line-dark);color:#fff">
+        <h3 style="color:#fff">Hand it over with confidence</h3>
+        <p style="color:rgba(255,255,255,.7)">If outsourcing is right, you gain a secure facility, workshare savings and one less thing to manage. If it isn't, we will tell you so and help you do it in-house.</p>
+      </article>
+    </div>
+    <p class="lede on-dark" style="margin-top:2.5rem;max-width:60ch">We only take work into our hands when it genuinely serves your core business. That is why clients stay.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.5rem">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently <span class="accent">asked</span></h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Which security audits do you hold?
+          <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <p>We are SOC 2 Type II and SOC 1 Type II audited, we pass IRS audits, and our staff and facilities are HIPAA trained and compliant. Type II matters: it tests whether controls actually operated over a period of time, rather than whether they existed on one day.</p>
+      </details>
+      <details>
+        <summary>Can you handle both printed mail and digital delivery?
+          <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <p>Yes. The same data file drives your printed pieces, secure email PDF delivery, and an online bill pay portal — so you are not integrating with one vendor for paper and another for digital.</p>
+      </details>
+      <details>
+        <summary>How do you make sure each document reaches the right person?
+          <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <p>Camera and vision systems read each document at every production stage and match it against its envelope before sealing. NCOA and CASS processing verifies the address itself, so both the contents and the destination are confirmed before a piece leaves the floor.</p>
+      </details>
+      <details>
+        <summary>How does outsourcing save us money?
+          <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <p>Three ways: USPS workshare presort discounts we pass back to you, the equipment and labor you no longer staff internally, and the reprint and return postage that NCOA and CASS address processing prevents. We will model all three against your actual volume during the strategy session.</p>
+      </details>
+      <details>
+        <summary>Do you serve clients outside Kansas City?
+          <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <p>Yes. Print-to-mail outsourcing runs nationwide across the US. Mail pickup for presorting and outsourced mailing services is available within the greater Kansas City area.</p>
+      </details>
+      <details>
+        <summary>How are our documents backed up?
+          <span class="pm" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <p>Our disaster recovery service keeps digital backups of your critical documents on secure servers, so your records stay independently recoverable and available whenever you need them.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contact" class="band band-mesh">
+  <div class="wrap cta-in">
+    <div>
+      <span class="eyebrow on-dark">Get started</span>
+      <h2>Let's map out what your mail <span class="accent">could</span> look like.</h2>
+      <p class="lede on-dark" style="margin-top:1.5rem">Book a strategy session. We will walk through your volume, your compliance requirements and your current process, then show you exactly what we would do with it.</p>
+      <div class="cta-actions">
+        <a class="btn btn-light" href="mailto:info@trustlineageconnect.com">
+          Book a strategy session
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost on-dark" href="https://trustlineage.com/">Visit Lineage</a>
+      </div>
+    </div>
+    <div>
+      <ul class="cta-list">
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A review of your mail spend and the postage discounts available on your volume</li>
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A walkthrough of how we meet SOC 2, SOC 1 and HIPAA requirements</li>
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>An honest in-house versus outsource recommendation</li>
+        <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No obligation, and a clear recommendation either way</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-cols">
+      <div class="ft-brand">
+        <div class="brand brand-rev"><img src="assets/lineage-connect-logo.png" alt="Lineage Connect" width="653" height="298" style="height:54px"></div>
+        <p>Secure print-to-mail outsourcing and compliance solutions. Operating since 2013, part of a family business founded in 1984.</p>
+      </div>
+      <div>
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="#solutions">Outsourced print-to-mail</a></li>
+          <li><a href="#solutions">Electronic delivery &amp; bill pay</a></li>
+          <li><a href="#solutions">Outsourced mailing</a></li>
+          <li><a href="#solutions">Local presorting</a></li>
+          <li><a href="#solutions">Disaster recovery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#compliance">Security &amp; compliance</a></li>
+          <li><a href="#process">Our process</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@trustlineageconnect.com">info@trustlineageconnect.com</a></li>
+          <li><a href="https://trustlineage.com/">trustlineage.com</a></li>
+          <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ft-word" aria-hidden="true"><img src="assets/lineage-connect-logo.png" alt="" width="653" height="298"></div>
+
+    <div class="ft-legal">
+      <span>&copy; 2026 Lineage Connect. All rights reserved.</span>
+      <span>SOC 2 Type II &amp; SOC 1 Type II audited · HIPAA compliant</span>
+      <a href="https://trustlineage.com/privacy-policy/">Privacy policy</a>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var menu=document.querySelector('.menu');
+  if(!menu)return;
+  menu.addEventListener('click',function(e){ if(e.target.closest('.menu-panel a')) menu.open=false; });
+  document.addEventListener('click',function(e){ if(menu.open && !menu.contains(e.target)) menu.open=false; });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && menu.open){ menu.open=false; menu.querySelector('summary').focus(); } });
+})();
+</script>
 </body>
 </html>
